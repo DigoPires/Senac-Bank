@@ -4,27 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sacar</title>
-    <link rel="stylesheet" href="./sacar.css">
+    <link rel="stylesheet" href="../CSS/estruture.css">
 </head>
 <body>
-
     <header>
-        <img src="./img/Logo_PI 2.png" alt="" id="logo">
-        <img src="./img/image 30.png" alt="" id="usuario">
+        <img src="../IMG/Logo_PI 2.png" alt="Logo" id="logo">
+        <img src="../IMG/user.png" alt="Usuário" id="usuario">
     
         <div class="header-icons"> 
-            
-            <img src="img/Group 6.png" alt="">
-            <img src="./img/Group 16.png" alt=""  >
-            
+            <img src="../IMG/interrogacao.png" alt="Dúvidas">
+            <img src="../IMG/leave.png" alt="Sair">
         </div>
     </header>
 
     <div class="titulo-barra">
         <div class="menu-voltar">
-            <img src="./img/botao-voltar.png" alt="" id="return-icon">
+            <img src="./IMG/botao-voltar.png" alt="" id="return-icon">
         </div>
-        Sacar
     </div>
 <div class="container-pai">
     <div class="container">
@@ -37,22 +33,8 @@
     </div>
 </div>
 
-    <script>
-        function realizarSaque() {
-            const valor = document.getElementById("valor").value;
-            const senha = document.getElementById("senha").value;
-
-            if (!valor || !senha) {
-                alert("Por favor, preencha todos os campos.");
-                return;
-            }
-
-            alert(`Saque de R$ ${valor} solicitado com sucesso!`);
-        }
-    </script>
-
 <footer>
-    <p>&copy; 2025 SeuBanco. Todos os direitos reservados.</p>
+    <p>&copy; 2025 Senac Bank. Todos os direitos reservados.</p>
 </footer>
 
 </body>

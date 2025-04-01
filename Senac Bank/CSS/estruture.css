@@ -1,48 +1,39 @@
-*{
+/* Reset básico */
+* {
     margin: 0;
     padding: 0;
     border: 0;
     box-sizing: border-box;
 }
 
+/* Define altura total da página */
 html, body {
     height: 100%;
     display: flex;
     flex-direction: column;
-}
-
-body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    margin: 0;
-    padding: 0;
     text-align: center;
 }
 
 header {
     background-color: #007bbb;
-    padding: 15px;
+    padding: 15px 30px;
+    height: 80px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-main{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#logo{
+#logo {
     width: 50px;
 }
 
-#usuario{
+#usuario {
     width: 60px;
 }
 
-.header-icons{
+.header-icons {
     display: flex;
     align-items: center;
     gap: 15px;
@@ -52,9 +43,35 @@ main{
     width: 30px;
 }
 
+/* Configuração da área principal */
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+/* Botões padrões */
+.btn {
+    background: orange;
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background: rgb(143, 93, 1);
+    transform: scale(1.03);
+}
+
 footer {
-    margin-top: 20px;
     padding: 20px;
     background-color: #007bbb;
     color: white;
+    margin-top: auto;
 }
