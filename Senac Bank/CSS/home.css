@@ -1,10 +1,12 @@
 .container {
     margin: 20px auto;
     padding: 20px;
-    background: white;
     width: 70%;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h1{
+    text-align: start;
 }
 
 .user-name {
@@ -13,26 +15,33 @@
 
 .saldo {
     margin: 20px 0;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-icon{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+}
+
+.text-icon img{
+    width: 50px;
+}
+
+.text-icon{
+    font-size: 2em;
 }
 
 .saldo-valor {
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.ver-extrato {
-    background: orange;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-.buttons {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    margin-left: 50px;
+    font-size: 3.2em;
+    font-weight: bold;
 }
 
 .btn {
@@ -42,14 +51,49 @@
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    transition: transform 0.1s ease-in-out 0.0.5s, background 0.3s ease-in-out;
 }
 
 .btn:hover {
-    opacity: 0.8;
+    background: rgb(136, 93, 14);
+    transform: scale(1.03);
+}
+
+.ver-extrato {
+    background: orange;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 20%;
+    height: 70px;
+    font-size: 1.7em;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.ver-extrato img{
+    width: 40px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
 .nav-main{
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.slogan{
+    width: 500px;
+    border: 1px solid orange;
+    border-radius: 20px;
 }
