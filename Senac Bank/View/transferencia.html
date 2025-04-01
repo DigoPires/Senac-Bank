@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transferir</title>
+    <link rel="stylesheet" href="./transferir.css">
+</head>
+<body>
+
+    <header>
+        <img src="./img/Logo_PI 2.png" alt="" id="logo">
+        <img src="./img/image 30.png" alt="" id="usuario">
+    
+        <div class="header-icons"> 
+            
+            <img src="img/Group 6.png" alt="">
+            <img src="./img/Group 16.png" alt=""  >
+            
+        </div>
+    </header>
+
+    <div class="titulo-barra">
+        <div class="menu-voltar">
+            <img src="./img/botao-voltar.png" alt="" id="return-icon">
+        </div>
+        Transferência 
+    </div>
+<div class="container-pai">
+    <div class="container">
+        <h2>Faça sua transferência aqui:</h2>
+        <div class="conteudo">        
+            <input type="number" id="valor" placeholder="N° da conta:">
+            <input type="password" id="senha" placeholder="Valor:">
+            <button onclick="realizarTransferencia()">Transferência</button>
+        </div>
+    </div>
+</div>
+
+    <script>
+        function realizarTransferencia() {
+            const valor = document.getElementById("valor").value;
+            const senha = document.getElementById("senha").value;
+
+            if (!valor || !senha) {
+                alert("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            alert(`Saque de R$ ${valor} solicitado com sucesso!`);
+        }
+    </script>
+
+<footer>
+    <p>&copy; 2025 SeuBanco. Todos os direitos reservados.</p>
+</footer>
+
+</body>
+</html>

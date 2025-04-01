@@ -1,0 +1,52 @@
+*{
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+header {
+    background-color: #007bbb;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+#logo, #usuario {
+    height: 50px;
+}
+
+.header-icons img {
+    width: 30px;
+    margin-left: 10px;
+}
+
+footer {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #007bbb;
+    color: white;
+}

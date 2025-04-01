@@ -1,0 +1,55 @@
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    background: white;
+    width: 70%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-name {
+    color: orange;
+}
+
+.saldo {
+    margin: 20px 0;
+}
+
+.saldo-valor {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.ver-extrato {
+    background: orange;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn {
+    background: orange;
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+.nav-main{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
