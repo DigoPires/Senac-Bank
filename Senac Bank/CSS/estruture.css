@@ -31,6 +31,8 @@ header {
 
 #usuario {
     width: 60px;
+    position: absolute;
+    left: 48.5%;
 }
 
 .header-icons {
@@ -48,7 +50,8 @@ main {
     flex: 1;
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    height: calc(100vh - 160px);
 }
 
 /* Botões padrões */
@@ -67,6 +70,16 @@ main {
 .btn:hover {
     background: rgb(143, 93, 1);
     transform: scale(1.03);
+}
+
+.titulo-barra {
+    background-color: orange;
+    color: white;
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    position: relative;
 }
 
 footer {

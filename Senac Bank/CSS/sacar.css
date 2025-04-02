@@ -1,25 +1,11 @@
 /* Estilização da página de saque */
 
-.titulo-barra {
-    display: flex;
-    align-items: center;
-    padding: 15px 30px;
-    background-color: #007bbb;
-}
-
 .menu-voltar {
     cursor: pointer;
 }
 
 #return-icon {
     width: 40px;
-}
-
-.container-pai {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: calc(100vh - 160px);
 }
 
 .container {
