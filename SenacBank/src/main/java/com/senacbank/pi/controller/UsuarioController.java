@@ -1,39 +1,41 @@
 package com.senacbank.pi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.senacbank.pi.model.Usuario;
 import com.senacbank.pi.service.UsuarioService;
-import org.springframework.ui.Model;
 
+@Controller
 public class UsuarioController {
+
     @Autowired
     private UsuarioService usuarioService;
 
+    // Exibe a tela de cadastro
     @GetMapping("/cadastro")
     public String telaCadastro(Model model) {
-        // Adiciona o objeto Usuario ao modelo para ser utilizado na view
         model.addAttribute("usuario", new Usuario());
-        return "cadastro"; // Retorna a view de cadastro
+        return "View/cadastro"; // Caminho da view HTML (templates/View/cadastro.html)
     }
 
+    // Processa o cadastro do usuário
     @PostMapping("/cadastro")
-    public String cadastro(@ModelAttribute Usuario usuario, RedirectAttributes redirectAttributes) {
-        // Chama o serviço para salvar o usuário no banco de dados
+    public String cadastrar(@ModelAttribute Usuario usuario, RedirectAttributes redirectAttributes) {
         usuarioService.cadastrar(usuario);
-        // Adiciona uma mensagem de sucesso ao redirecionar para a página inicial
         redirectAttributes.addFlashAttribute("mensagem", "Usuário cadastrado com sucesso!");
         redirectAttributes.addFlashAttribute("alertClass", "alert-success");
-        return "redirect:/cadastro"; // Redireciona para a página inicial após o cadastro
+        return "redirect:/login"; // Redireciona para a própria tela de cadastro
     }
 
+    // Lista os usuários cadastrados
     @GetMapping("/usuarios")
     public String listarUsuarios(Model model) {
-        // Chama o serviço para obter a lista de usuários
         model.addAttribute("usuarios", usuarioService.listarTodos());
-        return "listar-usuarios"; // Retorna a view de listagem de usuários
+        return "View/listar-usuarios"; // Corrigido para incluir a pasta "View" na view
     }
 }

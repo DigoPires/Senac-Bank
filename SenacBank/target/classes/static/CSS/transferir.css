@@ -1,0 +1,66 @@
+/* Estilização da página de saque */
+
+.menu-voltar {
+    cursor: pointer;
+}
+
+#return-icon {
+    width: 40px;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 350px;
+}
+
+h2 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.conteudo input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.btn.transferir {
+    width: 100%;
+    margin-top: 15px;
+    background: orange;
+    color: white;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn.transferir:hover {
+    background: rgb(136, 93, 14);
+}
+
+.btn.voltar {
+    width: 100%;
+    margin-top: 10px;
+    background: #ccc;
+    color: black;
+    padding: 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn.voltar:hover {
+    background: #999;
+}
