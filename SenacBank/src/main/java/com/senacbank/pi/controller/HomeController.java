@@ -9,6 +9,22 @@ public class HomeController {
 
     @GetMapping("/index")
     public String home() {
-        return "index"; // ou "index" se você tiver um arquivo index.html/jsp
+        return "index";
     }
+
+    @GetMapping("/depositar")
+    public String telaDepositar() {
+        return "View/telaDepositar";
+    }    
+
+    @GetMapping("/sacar")
+    public String telaSacar() {
+        return "View/telaSacar";
+    }    
+
+    @GetMapping("/transferir")
+    public String telaTransferir() {
+        return "View/telaTransferir";
+    }    
+
 }

@@ -17,7 +17,7 @@ public class LoginController {
 
     @GetMapping("/login")
     public String telaLogin() {
-        return "View/login"; // Sem .html, sem barra no começo
+        return "View/login";
     }    
 
     @PostMapping("/login")

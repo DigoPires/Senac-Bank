@@ -6,6 +6,8 @@
     <title>Home</title>
     <link rel="stylesheet" href="/CSS/estruture.css">
     <link rel="stylesheet" href="/CSS/home.css">
+    <link rel="stylesheet" href="/CSS/popup_extrato.css">
+    <link rel="stylesheet" href="/CSS/popup_comprovante.css">
 </head>
 <body>
     <header>
@@ -13,8 +15,8 @@
         <img src="/IMG/user.png" alt="Usuário" id="usuario">
     
         <div class="header-icons"> 
-            <img src="/IMG/interrogacao.png" alt="Dúvidas">
-            <img src="/IMG/leave.png" alt="Sair">
+            <a href=""><img src="/IMG/interrogacao.png" alt="Dúvidas"></a>
+            <a href="/login"><img src="/IMG/leave.png" alt="Sair"></a>
         </div>
     </header>
 
@@ -26,13 +28,13 @@
                     <p class="text-icon"><img src="/IMG/saldo.png" alt="">Saldo disponível</p>
                     <h2 class="saldo-valor">R$ 1092,35</h2>
                 </div>
-                <button class="btn ver-extrato text-icon">Ver Extrato<img src="/IMG/history.png" alt="Ícone Extrato"></button>
+                <button class="btn ver-extrato text-icon" onclick="openPopup_Extrato()">Ver Extrato<img src="/IMG/history.png" alt="Ícone Extrato"></button>
             </div>
             <div class="nav-main">
                 <div class="buttons">
-                    <a href="/View/telaDepositar.html"><button class="btn depositar">DEPOSITAR</button></a>
-                    <a href="/View/telaSacar.html"><button class="btn sacar">SACAR</button></a>
-                    <a href="/View/telaTransferir.html"><button class="btn transferir">TRANSFERIR</button></a>
+                    <a href="/depositar"><button class="btn depositar">DEPOSITAR</button></a>
+                    <a href="/sacar"><button class="btn sacar">SACAR</button></a>
+                    <a href="/transferir"><button class="btn transferir">TRANSFERIR</button></a>
                     <a href="#"><button class="btn extra">EXTRA</button></a>
                 </div>
                 <img class="slogan" src="/IMG/slogan1.jpg" alt="">
@@ -43,5 +45,75 @@
     <footer>
         <p>&copy; 2025 Senac Bank. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- Popup de Extrato -->
+    <div class="popup" id="extrato-popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup_Extrato()">&times;</span>
+            <h2>Extrato</h2>
+            <div class="extrato-lista">
+                <div class="extrato-item">
+                    <div class="info">
+                        <p>Pix Recebido</p>
+                        <h2 class="valor positivo">+ R$ 200,00</h2>
+                        <p>Nome</p>
+                    </div>
+                    <div class="comprovante">
+                        <img src="/IMG/extrato.png" onclick="openPopup_Comprovante()" alt="Comprovante">
+                        <p>Comprovante</p>
+                    </div>
+                </div>
+                <div class="extrato-item">
+                    <div class="info">
+                        <p>Pix Recebido</p>
+                        <h2 class="valor positivo">+ R$ 20,00</h2>
+                        <p>Nome</p>
+                    </div>
+                    <div class="comprovante">
+                        <img src="/IMG/extrato.png" onclick="openPopup_Comprovante()" alt="Comprovante">
+                        <p>Comprovante</p>
+                    </div>
+                </div>
+                <div class="extrato-item">
+                    <div class="info">
+                        <p>Pix Recebido</p>
+                        <h2 class="valor negativo">- R$ 54,80</h2>
+                        <p>Nome</p>
+                    </div>
+                    <div class="comprovante">
+                        <img src="/IMG/extrato.png" onclick="openPopup_Comprovante()" alt="Comprovante">
+                        <p>Comprovante</p>
+                    </div>
+                </div>
+                <div class="extrato-item">
+                    <div class="info">
+                        <p>Pix Recebido</p>
+                        <h2 class="valor positivo">+ R$ 42,00</h2>
+                        <p>Nome</p>
+                    </div>
+                    <div class="comprovante">
+                        <img src="/IMG/extrato.png" onclick="openPopup_Comprovante()" alt="Comprovante">
+                        <p>Comprovante</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup de Comprovante -->
+    <div class="popup" id="comprovante-popup">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup_Comprovante()">&times;</span>
+            <h2>Comprovante de <span id="tipo">Pagamento</span></h2>
+            <div class="conteudo">
+                <p><strong>Valor:</strong> <span id="valor">R$ XX,XX</span></p>
+                <p><strong>Recebido de / Enviado para:</strong> <span id="destinatario">Nome</span></p>
+                <p><strong>Data e hora:</strong> <span id="data-hora">30/04/2025 14:32</span></p>
+                <p><strong>ID:</strong> <span id="id-transacao">#123456789</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/popup.js"></script>
 </body>
 </html>
