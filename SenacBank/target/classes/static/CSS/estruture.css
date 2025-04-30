@@ -43,6 +43,11 @@ header {
 
 .header-icons img {
     width: 30px;
+    transition: 0.1s;
+}
+
+.header-icons img:hover{
+    transform: scale(1.1);
 }
 
 /* Configuração da área principal */
