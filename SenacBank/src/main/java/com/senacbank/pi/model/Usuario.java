@@ -6,23 +6,24 @@ public class Usuario {
     private Long id;
     private String nome;
     private String email;
-    private String telefone;
     private String senha;
+    private double saldo;
     private LocalDateTime dataCadastro;
 
     public Usuario() {
         this.dataCadastro = LocalDateTime.now();
     }
 
-    public Usuario(Long id, String nome, String email, String telefone, String senha, LocalDateTime dataCadastro) {
+    public Usuario(Long id, String nome, String email, String senha, LocalDateTime dataCadastro) {
         this.id = id;
         this.nome = nome;
         this.email = email;
-        this.telefone = telefone;
         this.senha = senha;
+        this.saldo = 0;
         this.dataCadastro = dataCadastro;
     }
 
+    // Getters e Setters
     public Long getId() {
         return id;
     }
@@ -47,20 +48,20 @@ public class Usuario {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
     public String getSenha() {
         return senha;
     }
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
     }
 
     public LocalDateTime getDataCadastro() {

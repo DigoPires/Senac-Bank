@@ -17,7 +17,7 @@
     
         <div class="header-icons"> 
             <a href=""><img src="/IMG/interrogacao.png" alt="Dúvidas"></a>
-            <a id="sair" href="/login"><img src="/IMG/leave.png" alt="Sair"></a>
+            <a id="sair" th:href="@{/logout}"><img src="/IMG/leave.png" alt="Sair"></a>
         </div>
     </header>
 
@@ -28,7 +28,7 @@
             <div class="conteudo">
                 <input type="number" id="valor" placeholder="N° da conta:">
                 <input type="password" id="senha" placeholder="Valor:">
-                <button class="btn transferir">Transferência</button>
+                <button class="btn transferir">Transferir</button>
                 <a href="/index"><button class="btn voltar">Voltar</button></a>
             </div>
         </div>

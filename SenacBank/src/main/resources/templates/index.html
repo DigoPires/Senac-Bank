@@ -16,17 +16,29 @@
     
         <div class="header-icons"> 
             <a href=""><img src="/IMG/interrogacao.png" alt="Dúvidas"></a>
-            <a id="sair" href="/login"><img src="/IMG/leave.png" alt="Sair"></a>
+            <a id="sair" th:href="@{/logout}"><img src="/IMG/leave.png" alt="Sair"></a>
         </div>
     </header>
 
     <main>
         <div class="container">
-            <h1>Olá, <span class="user-name">Nome Usuário</span>!</h1>
+
+            <h1>Olá, <span th:if="${session.usuario}" class="user-name" th:text="${session.usuario.nome}"></span>!</h1>
+            <!-- Alerta de sucesso -->
+            <div th:if="${mensagem != null} and ${alertClass} == 'alert-success'" class="alert alert-success">
+                <p th:text="${mensagem}"></p>
+            </div>
+
+            <!-- Alerta de erro -->
+            <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
+                <p th:text="${mensagem}"></p>
+            </div>    
             <div class="saldo">
                 <div>  
                     <p class="text-icon"><img src="/IMG/saldo.png" alt="">Saldo disponível</p>
-                    <h2 class="saldo-valor">R$ 1092,35</h2>
+                    <h2 th:if="${session.usuario}" class="saldo-valor"
+                    th:text="'R$ ' + ${#numbers.formatDecimal(session.usuario.saldo, 1, 'POINT', 2, 'COMMA')}">
+                    </h2>            
                 </div>
                 <button class="btn ver-extrato text-icon" onclick="openPopup_Extrato()">Ver Extrato<img src="/IMG/history.png" alt="Ícone Extrato"></button>
             </div>
