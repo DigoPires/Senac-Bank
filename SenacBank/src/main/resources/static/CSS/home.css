@@ -20,6 +20,12 @@
     color: orange;
 }
 
+.titulo-nome-id{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 /* Estilização do saldo */
 .saldo {
     margin: 20px 0;

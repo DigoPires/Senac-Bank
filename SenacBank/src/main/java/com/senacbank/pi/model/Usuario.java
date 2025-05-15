@@ -1,6 +1,8 @@
 package com.senacbank.pi.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Usuario {
     private Long id;
@@ -9,6 +11,11 @@ public class Usuario {
     private String senha;
     private double saldo;
     private LocalDateTime dataCadastro;
+    private List<Extrato> extrato = new ArrayList<>();
+
+    public List<Extrato> getExtrato() {
+        return extrato;
+    }
 
     public Usuario() {
         this.dataCadastro = LocalDateTime.now();
@@ -70,5 +77,9 @@ public class Usuario {
 
     public void setDataCadastro(LocalDateTime dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+
+    public void adicionarExtrato(Extrato extrato) {
+        this.extrato.add(extrato);
     }
 }

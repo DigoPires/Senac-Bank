@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -14,8 +14,8 @@
     <header>
         <img src="/IMG/Logo_PI 2.png" alt="Logo" id="logo">
         <img src="/IMG/user.png" alt="Usuário" id="usuario">
-    
-        <div class="header-icons"> 
+
+        <div class="header-icons">
             <a href=""><img src="/IMG/interrogacao.png" alt="Dúvidas"></a>
             <a id="sair" th:href="@{/logout}"><img src="/IMG/leave.png" alt="Sair"></a>
         </div>
@@ -26,10 +26,19 @@
         <div class="container">
             <h2>Faça sua transferência aqui:</h2>
             <div class="conteudo">
-                <input type="number" id="valor" placeholder="N° da conta:">
-                <input type="password" id="senha" placeholder="Valor:">
-                <button class="btn transferir">Transferir</button>
-                <a href="/index"><button class="btn voltar">Voltar</button></a>
+                <form th:action="@{/transferir}" method="post" th:object="${usuario}">
+                    <input type="number" id="idEnvio" name="idEnvio" placeholder="N° da conta:" required>
+                    <input type="number" id="valor" name="valor" placeholder="Valor:" step="0.01" required>
+                    <input type="password" id="senha" name="senha" placeholder="Senha:" required>
+                    
+                    <!-- Alerta de erro -->
+                    <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
+                        <p th:text="${mensagem}"></p>
+                    </div>
+
+                    <button type="submit" class="btn transferir">Transferir</button>
+                    <a th:href="@{/index}"><button type="button" class="btn voltar">Voltar</button></a>
+                </form>
             </div>
         </div>
     </main>

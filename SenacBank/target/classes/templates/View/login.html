@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Login</title>
-  <link rel="stylesheet" href="/CSS/login.css"/>
+  <link rel="stylesheet" href="/CSS/login.css" />
+  <link rel="stylesheet" href="/CSS/estruture_popup.css">
+  <link rel="stylesheet" href="/CSS/popup_usuarios.css">
 </head>
+
 <body>
 
   <main class="login-container">
@@ -37,5 +41,46 @@
     </div>
   </main>
 
+
+  <!-- Botão flutuante -->
+  <button class="btn-flutuante" onclick="abrirPopupUsuarios()">Usuários</button>
+
+  <!-- Popup de Usuários -->
+  <div class="popup" id="popup-usuarios" style="display: none;">
+    <div class="popup-content" id="popup-usuarios-content">
+      <span class="close" onclick="fecharPopupUsuarios()">&times;</span>
+      <h2>Lista de Usuários</h2>
+      <div id="usuarios-lista">
+        <!-- Os usuários serão preenchidos aqui pelo Thymeleaf -->
+        <table class="tabela-usuarios">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Senha</th>
+              <th>Saldo</th>
+              <th>Cadastro</th> <!-- Nova coluna -->
+            </tr>
+          </thead>
+          <tbody>
+            <tr th:each="u : ${usuarios}">
+              <td th:text="${u.id}"></td>
+              <td th:text="${u.nome}"></td>
+              <td th:text="${u.email}"></td>
+              <td th:text="${u.senha}"></td>
+              <td th:text="'R$ ' + ${#numbers.formatDecimal(u.saldo, 1, 'POINT', 2, 'COMMA')}"></td>
+              <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td> <!-- Aqui -->
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="/JS/popup.js"></script>
+
 </body>
+
 </html>

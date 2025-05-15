@@ -1,5 +1,8 @@
 package com.senacbank.pi.controller;
 
+import java.util.List;
+import org.springframework.ui.Model;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,9 +24,11 @@ public class LoginController {
     private UsuarioService usuarioService;
 
     @GetMapping("/login")
-    public String telaLogin() {
+    public String telaLogin(Model model) {
+        List<Usuario> usuarios = usuarioService.buscarTodos();
+        model.addAttribute("usuarios", usuarios);
         return "View/login";
-    }    
+    }
 
     @PostMapping("/login")
     public String fazerLogin(

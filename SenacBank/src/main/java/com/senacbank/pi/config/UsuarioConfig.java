@@ -14,13 +14,21 @@ public class UsuarioConfig {
     public CommandLineRunner demo(UsuarioService usuarioService) {
         return (args) -> {
 
-            Usuario usuario = new Usuario();
-            usuario.setEmail("rodrigo@exemplo");
-            usuario.setSenha("1234");
-            usuario.setNome("Rodrigo");
-            usuario.setSaldo(125020.92);
+            Usuario usuario1 = new Usuario();
+            usuario1.setEmail("rodrigo@exemplo");
+            usuario1.setSenha("1234");
+            usuario1.setNome("Rodrigo");
+            usuario1.setSaldo(125020.92);
 
-            usuarioService.cadastrar(usuario);
+            usuarioService.cadastrar(usuario1);
+
+            Usuario usuario2 = new Usuario();
+            usuario2.setEmail("pedro@exemplo");
+            usuario2.setSenha("1234");
+            usuario2.setNome("pedro");
+            usuario2.setSaldo(16782.04);
+
+            usuarioService.cadastrar(usuario2);
         };
     }
 }
