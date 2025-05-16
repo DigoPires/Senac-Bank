@@ -1,0 +1,53 @@
+/* caixinha.css */
+
+.titulo-barra {
+    text-align: center;
+    font-size: 2.5em;
+    color: #ffa500;
+    margin: 20px 0;
+}
+
+.container-caixinha {
+    background: linear-gradient(to right, #fff7e6, #ffe0b2);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+}
+
+h2.titulo-caixinha {
+    color: #ff8c00;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.saldo-caixinha {
+    font-size: 2em;
+    color: #008000;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.btn-caixinha {
+    background: #ffa500;
+    color: white;
+    border: none;
+    padding: 15px 25px;
+    font-size: 1.2em;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-caixinha:hover {
+    background: #cc8400;
+}
+
+.caixinha-status {
+    margin-top: 20px;
+    font-size: 1em;
+    color: #555;
+}

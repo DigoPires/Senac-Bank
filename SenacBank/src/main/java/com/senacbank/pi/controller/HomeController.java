@@ -32,14 +32,16 @@ public class HomeController {
     @GetMapping("/index")
     public String home(Model model, @SessionAttribute("usuario") Usuario usuarioLogado) {
         List<Usuario> usuarios = usuarioService.buscarTodos();
-        model.addAttribute("usuario", usuarioLogado);
         model.addAttribute("usuarios", usuarios);
+        model.addAttribute("usuario", usuarioLogado);
         return "index";
     }
 
 
     @GetMapping("/depositar")
     public String telaDepositar(Model model, @SessionAttribute("usuario") Usuario usuarioLogado) {
+        List<Usuario> usuarios = usuarioService.buscarTodos();
+        model.addAttribute("usuarios", usuarios);
         model.addAttribute("usuario", usuarioLogado);
         return "View/telaDepositar";
     }
@@ -50,7 +52,7 @@ public class HomeController {
 
         if (deposito) {
             NumberFormat nf = NumberFormat.getCurrencyInstance(localePtBr);
-            redirectAttributes.addFlashAttribute("mensagem", "Depósito realizado com sucesso! Valor Depositado: R$" + nf.format(valor));
+            redirectAttributes.addFlashAttribute("mensagem", "Depósito realizado com sucesso! Valor Depositado: " + nf.format(valor));
             redirectAttributes.addFlashAttribute("alertClass", "alert-success");
             return "redirect:/index";
         }
@@ -62,6 +64,8 @@ public class HomeController {
 
     @GetMapping("/sacar")
     public String telaSacar(Model model, @SessionAttribute("usuario") Usuario usuarioLogado) {
+        List<Usuario> usuarios = usuarioService.buscarTodos();
+        model.addAttribute("usuarios", usuarios);        
         model.addAttribute("usuario", usuarioLogado);
         return "View/telaSacar";
     }
@@ -84,6 +88,8 @@ public class HomeController {
 
     @GetMapping("/transferir")
     public String telaTransferir(Model model, @SessionAttribute("usuario") Usuario usuarioLogado) {
+        List<Usuario> usuarios = usuarioService.buscarTodos();
+        model.addAttribute("usuarios", usuarios);        
         model.addAttribute("usuario", usuarioLogado);
         return "View/telaTransferir";
     }
@@ -103,6 +109,14 @@ public class HomeController {
         redirectAttributes.addFlashAttribute("alertClass", "alert-erro");
 
         return "redirect:/transferir";
+    }
+
+    @GetMapping("/caixinha")
+    public String telaCaixinha(Model model, @SessionAttribute("usuario") Usuario usuarioLogado) {
+        List<Usuario> usuarios = usuarioService.buscarTodos();
+        model.addAttribute("usuarios", usuarios);        
+        model.addAttribute("usuario", usuarioLogado);
+        return "View/telaCaixinha";
     }
 
     @GetMapping("/logout")
