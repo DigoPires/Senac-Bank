@@ -139,7 +139,10 @@ public class UsuarioService {
 
     public Boolean sacarDaCaixinha(Usuario usuario, double valor) {
         Caixinha caixinha = usuario.getCaixinha();
-        if (caixinha == null) {
+        System.out.println(caixinha.getSaldo());
+        System.out.println(valor);
+        System.out.println(caixinha.getSaldo() < valor);
+        if (caixinha == null || caixinha.getSaldo() < valor) {
             return false;
         }
         if (caixinha.sacar(valor)) {
@@ -167,13 +170,12 @@ public class UsuarioService {
         }
 
         if (tipoContribuicao.equalsIgnoreCase("Adicionar")) {
-            depositarNaCaixinha(usuario, valor);
+            return depositarNaCaixinha(usuario, valor);
         } 
         else {
-            sacarDaCaixinha(usuario, valor);
+            return sacarDaCaixinha(usuario, valor);
         }
     
-        return true;
     }    
 
 
