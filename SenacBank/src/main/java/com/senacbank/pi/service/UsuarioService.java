@@ -139,9 +139,6 @@ public class UsuarioService {
 
     public Boolean sacarDaCaixinha(Usuario usuario, double valor) {
         Caixinha caixinha = usuario.getCaixinha();
-        System.out.println(caixinha.getSaldo());
-        System.out.println(valor);
-        System.out.println(caixinha.getSaldo() < valor);
         if (caixinha == null || caixinha.getSaldo() < valor) {
             return false;
         }
