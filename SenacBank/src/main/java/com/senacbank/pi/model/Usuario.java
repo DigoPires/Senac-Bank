@@ -12,13 +12,11 @@ public class Usuario {
     private double saldo;
     private LocalDateTime dataCadastro;
     private List<Extrato> extrato = new ArrayList<>();
-
-    public List<Extrato> getExtrato() {
-        return extrato;
-    }
+    private Caixinha caixinha;  // só uma caixinha
 
     public Usuario() {
         this.dataCadastro = LocalDateTime.now();
+        this.caixinha = new Caixinha(); // inicializa a caixinha padrão
     }
 
     public Usuario(Long id, String nome, String email, String senha, LocalDateTime dataCadastro) {
@@ -28,9 +26,28 @@ public class Usuario {
         this.senha = senha;
         this.saldo = 0;
         this.dataCadastro = dataCadastro;
+        this.caixinha = new Caixinha(); // inicializa aqui também
     }
 
-    // Getters e Setters
+    // Extrato
+    public List<Extrato> getExtrato() {
+        return extrato;
+    }
+
+    public void adicionarExtrato(Extrato extrato) {
+        this.extrato.add(extrato);
+    }
+
+    // Caixinha - única
+    public Caixinha getCaixinha() {
+        return caixinha;
+    }
+
+    public void setCaixinha(Caixinha caixinha) {
+        this.caixinha = caixinha;
+    }
+
+    // Getters e Setters gerais
     public Long getId() {
         return id;
     }
@@ -77,9 +94,5 @@ public class Usuario {
 
     public void setDataCadastro(LocalDateTime dataCadastro) {
         this.dataCadastro = dataCadastro;
-    }
-
-    public void adicionarExtrato(Extrato extrato) {
-        this.extrato.add(extrato);
     }
 }

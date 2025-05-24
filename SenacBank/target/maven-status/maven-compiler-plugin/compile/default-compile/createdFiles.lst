@@ -1,9 +1,9 @@
-com\senacbank\pi\config\AuthInterceptor.class
-com\senacbank\pi\config\UsuarioConfig.class
 com\senacbank\pi\controller\HomeController.class
-com\senacbank\pi\model\Usuario.class
-com\senacbank\pi\controller\CadastroController.class
-com\senacbank\pi\service\UsuarioService.class
 com\senacbank\pi\PiApplication.class
+com\senacbank\pi\config\AuthInterceptor.class
+com\senacbank\pi\model\Usuario.class
 com\senacbank\pi\controller\LoginController.class
+com\senacbank\pi\config\UsuarioConfig.class
+com\senacbank\pi\controller\CadastroController.class
 com\senacbank\pi\config\WebConfig.class
+com\senacbank\pi\service\UsuarioService.class

@@ -9,14 +9,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.senacbank.pi.model.Caixinha;
 import com.senacbank.pi.model.Extrato;
 import com.senacbank.pi.model.Usuario;
 
 @Service
-
 public class UsuarioService {
 
-    private final List <Usuario> usuarios = new ArrayList<>();
+    private final List<Usuario> usuarios = new ArrayList<>();
 
     public List<Usuario> getUsuarios() {
         return usuarios;
@@ -25,7 +25,6 @@ public class UsuarioService {
     private final AtomicLong contador = new AtomicLong(1);
 
     public Usuario cadastrar(Usuario usuario) {
-        // Verifica se já existe um usuário com o mesmo e-mail
         boolean emailExistente = usuarios.stream()
                 .anyMatch(u -> u.getEmail().equalsIgnoreCase(usuario.getEmail()));
 
@@ -33,7 +32,6 @@ public class UsuarioService {
             return null;
         }
 
-        // Formata o nome capitalizando a primeira letra de cada palavra
         String nomeFormatado = capitalizeFirstLetterOfEachWord(usuario.getNome());
         usuario.setNome(nomeFormatado);
 
@@ -46,14 +44,14 @@ public class UsuarioService {
         if (text == null || text.isEmpty()) {
             return text;
         }
-        return Arrays.stream(text.split("[\\s\\-_]+")) // Divide por espaços, hífens OU underscores
+        return Arrays.stream(text.split("[\\s\\-_]+"))
                 .map(word -> {
                     if (word.isEmpty()) {
-                        return word; // Mantém palavras vazias
+                        return word;
                     }
                     return word.substring(0, 1).toUpperCase() + word.substring(1).toLowerCase();
                 })
-                .collect(Collectors.joining(" ")); // Junta novamente com espaços
+                .collect(Collectors.joining(" "));
     }
 
     public List<Usuario> buscarTodos() {
@@ -72,10 +70,9 @@ public class UsuarioService {
     public Boolean depositar(Usuario usuario, double valor) {
         if (valor > 0 && valor < 1000000000000000L) {
             usuario.setSaldo(valor + usuario.getSaldo());
-            usuario.adicionarExtrato(new Extrato("Depóstio", valor, LocalDateTime.now(), usuario.getNome()));
+            usuario.adicionarExtrato(new Extrato("Depósito", valor, LocalDateTime.now(), usuario.getNome()));
             return true;
         }
-
         return false;
     }
 
@@ -83,13 +80,12 @@ public class UsuarioService {
         if (usuario.getSaldo() < 1 || !usuario.getSenha().equals(senha)) {
             return false;
         }
-        
+
         if (valor <= usuario.getSaldo() && (valor > 0 && valor < 1000000000000000L)) {
             usuario.setSaldo(usuario.getSaldo() - valor);
             usuario.adicionarExtrato(new Extrato("Saque", valor, LocalDateTime.now(), usuario.getNome()));
             return true;
         }
-
         return false;
     }
 
@@ -114,9 +110,71 @@ public class UsuarioService {
         usuario.adicionarExtrato(new Extrato("Transferência Enviada", valor, LocalDateTime.now(), usuarioDestino.getNome()));
         usuarioDestino.adicionarExtrato(new Extrato("Transferência Recebida", valor, LocalDateTime.now(), usuario.getNome()));
 
-
         return true;
     }
+
+    
+    public boolean criarCaixinha(Usuario usuario) {
+        if (usuario.getCaixinha() != null) {
+            return false;
+        }
+        Caixinha novaCaixinha = new Caixinha();
+        usuario.setCaixinha(novaCaixinha);
+        return true;
+    }
+
+    public Boolean depositarNaCaixinha(Usuario usuario, double valor) {
+        Caixinha caixinha = usuario.getCaixinha();
+        if (caixinha == null) {
+            return false;
+        }
+        if (valor > 0 && valor <= usuario.getSaldo()) {
+            caixinha.depositar(valor);
+            usuario.setSaldo(usuario.getSaldo() - valor);
+            usuario.adicionarExtrato(new Extrato("Depósito na Caixinha", valor, LocalDateTime.now(), usuario.getNome()));
+            return true;
+        }
+        return false;
+    }
+
+    public Boolean sacarDaCaixinha(Usuario usuario, double valor) {
+        Caixinha caixinha = usuario.getCaixinha();
+        if (caixinha == null) {
+            return false;
+        }
+        if (caixinha.sacar(valor)) {
+            usuario.setSaldo(usuario.getSaldo() + valor);
+            usuario.adicionarExtrato(new Extrato("Saque da Caixinha", valor, LocalDateTime.now(), usuario.getNome()));
+            return true;
+        }
+        return false;
+    }
+
+    public boolean aplicarRendimentoCaixinha(Usuario usuario) {
+        Caixinha caixinha = usuario.getCaixinha();
+        if (caixinha == null || usuario.getSaldo() < 1) {
+            return false;
+        }
+        caixinha.aplicarRendimento();
+        usuario.adicionarExtrato(new Extrato("Rendimento aplicado na Caixinha",
+                caixinha.getTaxaRendimento(), LocalDateTime.now(), usuario.getNome()));
+        return true;
+    }
+
+    public Boolean contribuirCaixinha(Usuario usuario, double valor, String tipoContribuicao, String senha) {
+        if (!usuario.getSenha().equals(senha) || valor < 1 || tipoContribuicao == null) {
+            return false;
+        }
+
+        if (tipoContribuicao.equalsIgnoreCase("Adicionar")) {
+            depositarNaCaixinha(usuario, valor);
+        } 
+        else {
+            sacarDaCaixinha(usuario, valor);
+        }
+    
+        return true;
+    }    
 
 
     public Usuario buscarPorId(Long id) {
@@ -127,5 +185,5 @@ public class UsuarioService {
         }
         return null;
     }
-}
 
+}

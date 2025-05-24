@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.senacbank.pi.model.Caixinha;
 import com.senacbank.pi.model.Usuario;
 import com.senacbank.pi.service.UsuarioService;
 
@@ -113,10 +114,29 @@ public class HomeController {
 
     @GetMapping("/caixinha")
     public String telaCaixinha(Model model, @SessionAttribute("usuario") Usuario usuarioLogado) {
+        Caixinha caixinha = usuarioLogado.getCaixinha();
+        model.addAttribute("caixinha", caixinha);
+
         List<Usuario> usuarios = usuarioService.buscarTodos();
         model.addAttribute("usuarios", usuarios);        
         model.addAttribute("usuario", usuarioLogado);
         return "View/telaCaixinha";
+    }
+
+    @PostMapping("/caixinha")
+    public String caixinha(@SessionAttribute("usuario") Usuario usuarioLogado, double valor, String tipoContribuicao, String senha, RedirectAttributes redirectAttributes) {
+        Boolean caixinha = usuarioService.contribuirCaixinha(usuarioLogado, valor, tipoContribuicao, senha);
+
+        if (caixinha) {
+            NumberFormat nf = NumberFormat.getCurrencyInstance(localePtBr);
+            redirectAttributes.addFlashAttribute("mensagem", "Contribuição realizada com sucesso! Valor Contribuído: " + nf.format(valor));
+            redirectAttributes.addFlashAttribute("alertClass", "alert-success");
+            return "redirect:/index";
+        }
+        redirectAttributes.addFlashAttribute("mensagem", "Erro ao realizar a contribuição para a caixinha.");
+        redirectAttributes.addFlashAttribute("alertClass", "alert-erro");
+
+        return "redirect:/caixinha";
     }
 
     @GetMapping("/logout")
