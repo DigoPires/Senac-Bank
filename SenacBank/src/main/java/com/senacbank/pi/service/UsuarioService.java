@@ -131,7 +131,7 @@ public class UsuarioService {
         if (valor > 0 && valor <= usuario.getSaldo()) {
             caixinha.depositar(valor);
             usuario.setSaldo(usuario.getSaldo() - valor);
-            usuario.adicionarExtrato(new Extrato("Depósito na Caixinha", valor, LocalDateTime.now(), usuario.getNome()));
+            usuario.adicionarExtrato(new Extrato("Adicionado na Caixinha", valor, LocalDateTime.now(), usuario.getNome()));
             return true;
         }
         return false;
@@ -144,7 +144,7 @@ public class UsuarioService {
         }
         if (caixinha.sacar(valor)) {
             usuario.setSaldo(usuario.getSaldo() + valor);
-            usuario.adicionarExtrato(new Extrato("Saque da Caixinha", valor, LocalDateTime.now(), usuario.getNome()));
+            usuario.adicionarExtrato(new Extrato("Retirado da Caixinha", valor, LocalDateTime.now(), usuario.getNome()));
             return true;
         }
         return false;

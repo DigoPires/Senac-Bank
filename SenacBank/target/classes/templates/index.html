@@ -114,8 +114,8 @@
                 <div class="extrato-item" th:each="transacao : ${usuario.extrato}">
                     <div class="info">
                         <p th:text="${transacao.tipo}"></p>
-                        <h2 th:text="${transacao.tipo.contains('Recebida') or transacao.tipo.equals('Depóstio') ? '+ R$ ' + #numbers.formatDecimal(transacao.valor, 1, 'POINT', 2, 'COMMA') : '- R$ ' + #numbers.formatDecimal(transacao.valor, 1, 'POINT', 2, 'COMMA')}"
-                            th:classappend="${transacao.tipo.contains('Recebida') or transacao.tipo.equals('Depóstio')} ? 'valor positivo' : 'valor negativo'">
+                        <h2 th:text="${transacao.tipo.contains('Recebida') or transacao.tipo.equals('Depósito') or transacao.tipo.equals('Retirado')? '+ R$ ' + #numbers.formatDecimal(transacao.valor, 1, 'POINT', 2, 'COMMA') : '- R$ ' + #numbers.formatDecimal(transacao.valor, 1, 'POINT', 2, 'COMMA')}"
+                            th:classappend="${transacao.tipo.contains('Recebida') or transacao.tipo.equals('Depósito') or transacao.tipo.equals('Retirado')} ? 'valor positivo' : 'valor negativo'">
                         </h2>
                         <p th:text="${transacao.participante}"></p>
                         <p th:text="${#temporals.format(transacao.dataHora, 'dd/MM/yyyy HH:mm')}"></p>
