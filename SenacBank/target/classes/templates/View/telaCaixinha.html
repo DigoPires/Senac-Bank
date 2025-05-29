@@ -23,18 +23,18 @@
         </div>
     </header>
 
+    <h1 class="titulo-barra">Caixinha de Rendimentos</h1>
     <main>
         <section class="caixinha-container">
+            <p>Coloque parte do seu saldo na caixinha e veja o rendimento automático!</p>
             <div>
                 <div class="caixinha-header">
-                    <h1>Caixinha de Rendimentos</h1>
-                    <p>Coloque parte do seu saldo na caixinha e veja o rendimento automático!</p>
 
                     <div class="caixinha-saldo">
                         <p><strong>Saldo:</strong> <span
                                 th:text="'R$ ' + ${#numbers.formatDecimal(caixinha.saldo, 1, 'POINT', 2, 'COMMA')}">R$
                                 0,00</span></p>
-                        <p><strong>Rendimento a cada 5 segundos:</strong> +R$ <span id="rendimento-caixinha">0,50</span>
+                        <p><strong>Rendimento a cada 5 segundos:</strong> <span id="rendimento-caixinha">+R$ 0,50</span>
                         </p>
                     </div>
                 </div>
@@ -44,6 +44,10 @@
                         <option value="Adicionar">Adicionar</option>
                         <option value="Retirar">Retirar</option>
                     </select>
+                </div>
+                
+                <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
+                    <p th:text="${mensagem}"></p>
                 </div>
             </div>
 
@@ -59,10 +63,6 @@
 
                     <div class="campo">
                         <input type="password" id="senha" name="senha" placeholder="Senha:" required>
-                    </div>
-
-                    <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
-                        <p th:text="${mensagem}"></p>
                     </div>
 
                     <button type="submit" class="btn confirmar">Confirmar</button>

@@ -1,133 +1,171 @@
 .caixinha-container {
-    max-width: 800px;
-    margin: 60px auto;
-    background: #fff;
-    padding: 30px 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    max-width: 900px;
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 35px 45px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     display: flex;
-    gap: 20px;
-}
-
-.caixinha-header h1 {
-    font-size: 1.8em;
-    color: #222;
-    margin: 0 0 5px 0;
-}
-
-.caixinha-header p {
-    font-size: 1em;
-    color: #666;
-    margin: 0;
-}
-
-.caixinha-conteudo {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
+.caixinha-container > div {
+    flex: 1;
+    min-width: 300px;
+}
+
+.caixinha-header {
+    margin-bottom: 25px;
+}
+
+.caixinha-header h1 {
+    font-size: 2em;
+    color: #1a2530;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.caixinha-header p {
+    font-size: 1.05em;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
 .caixinha-saldo {
-    flex: 1 1 300px;
-    background: #fafafa;
-    padding: 20px;
+    background: #f9f9f9;
+    padding: 25px;
     border-radius: 12px;
-    border: 1px solid #eee;
-    box-shadow: inset 0 0 8px rgba(0,0,0,0.03);
-    font-size: 1em;
-    color: #333;
+    border: 1px solid #e7e7e7;
+    margin-bottom: 20px;
+    text-align: left;
 }
 
 .caixinha-saldo p {
-    margin: 10px 0;
+    margin: 8px 0;
+    font-size: 1.1em;
+    color: #333;
+}
+
+.caixinha-saldo p strong {
+    color: #1a2530;
+}
+
+.caixinha-saldo p span[th\:text*="caixinha.saldo"],
+.caixinha-saldo p #rendimento-caixinha {
+    font-weight: bold;
+    color: #007bbb;
+    font-size: 1.3em;
+}
+.caixinha-saldo p #rendimento-caixinha {
+    color: #28a745;
+    font-size: 1.1em;
 }
 
 .caixinha-formulario {
-    flex: 1 1 400px;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
 }
 
 .campo {
     display: flex;
     flex-direction: column;
-    gap: 5px;
+    gap: 8px;
 }
 
 .campo label {
     font-weight: 600;
     color: #333;
-    font-size: 0.95em;
+    font-size: 1em;
+    text-align: left;
 }
 
-.campo input,
+.campo input[type="number"],
+.campo input[type="password"],
 .campo select {
-    padding: 12px 15px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 1px solid #d1d1d1;
     font-size: 1em;
     background: #fff;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.campo input::placeholder {
+    color: #aaa;
 }
 
 .campo input:focus,
 .campo select:focus {
     border-color: orange;
-    box-shadow: 0 0 8px rgba(255, 165, 0, 0.3);
+    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.2);
     outline: none;
 }
 
 .campo select {
     appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" fill="%23333" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23555" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
     background-repeat: no-repeat;
-    background-position: right 12px center;
+    background-position: right 15px center;
     background-size: 16px;
     cursor: pointer;
 }
 
-.btn.confirmar {
-    width: 80%;
-    margin-top: 15px;
-    background: orange;
-    color: white;
+.btn.confirmar,
+.btn.voltar {
+    width: 100%;
     padding: 15px;
-    font-size: 1.2em;
+    font-size: 1.15em;
     font-weight: bold;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn.confirmar {
+    background: linear-gradient(145deg, #ffae00, #f39c12);
+    color: white;
+    border: none;
+    margin-top: 10px;
 }
 
 .btn.confirmar:hover {
-    background: rgb(136, 93, 14);
+    background: linear-gradient(145deg, #f39c12, #e68a00);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
 }
 
 .btn.voltar {
-    width: 80%;
+    background: #e9ecef;
+    color: #333;
+    border: 1px solid #ced4da;
     margin-top: 10px;
-    background: #ccc;
-    color: black;
-    padding: 15px;
-    font-size: 1.2em;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
 .btn.voltar:hover {
-    background: #999;
+    background: #dde1e5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.alert.alert-erro {
-    background: #ffe0e0;
-    padding: 10px;
-    border-radius: 8px;
-    color: #a00;
-    font-weight: bold;
-    margin-top: 10px;
+.caixinha-formulario .alert.alert-erro {
+    background-color: #fff0f1;
+    color: #9c1c28;
+    border: 1px solid #f5c6cb;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 500;
+    text-align: left;
+    margin-top: 5px;
+    margin-bottom: 10px;
+}
+
+.caixinha-formulario .alert.alert-erro p {
+    margin: 0;
 }
