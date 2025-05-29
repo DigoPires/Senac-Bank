@@ -72,12 +72,11 @@
     <button class="btn-flutuante" onclick="abrirPopupUsuarios()">Usuários</button>
 
     <!-- Popup de Usuários -->
-    <div class="popup" id="popup-usuarios" style="display: none;">
+    <div class="popup" id="popup-usuarios" style="display: none;" onclick="fecharSeClicarFora(event)">
         <div class="popup-content" id="popup-usuarios-content">
             <span class="close" onclick="fecharPopupUsuarios()">&times;</span>
             <h2>Lista de Usuários</h2>
             <div id="usuarios-lista">
-                <!-- Os usuários serão preenchidos aqui pelo Thymeleaf -->
                 <table class="tabela-usuarios">
                     <thead>
                         <tr>
@@ -86,7 +85,7 @@
                             <th>Email</th>
                             <th>Senha</th>
                             <th>Saldo</th>
-                            <th>Cadastro</th> <!-- Nova coluna -->
+                            <th>Cadastro</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,17 +95,17 @@
                             <td th:text="${u.email}"></td>
                             <td th:text="${u.senha}"></td>
                             <td th:text="'R$ ' + ${#numbers.formatDecimal(u.saldo, 1, 'POINT', 2, 'COMMA')}"></td>
-                            <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td> <!-- Aqui -->
+                            <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td>
                         </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
 
+
     <!-- Popup de Extrato -->
-    <div class="popup" id="extrato-popup">
+    <div class="popup" id="extrato-popup" onclick="closeIfClickedOutside_Extrato(event)">
         <div class="popup-content">
             <span class="close" onclick="closePopup_Extrato()">&times;</span>
             <h2>Extrato</h2>
@@ -132,16 +131,14 @@
                     </div>
                 </div>
             </div>
-            <!-- Mensagem quando estiver vazio -->
             <div class="extrato-vazio" th:if="${usuario.extrato.size() == 0}">
                 <p>Você ainda não possui conteúdo no extrato.</p>
             </div>
         </div>
     </div>
 
-
     <!-- Popup de Comprovante -->
-    <div class="popup" id="comprovante-popup" style="display: none;">
+    <div class="popup" id="comprovante-popup" style="display: none;" onclick="closeIfClickedOutside_Comprovante(event)">
         <div class="popup-content-comprovante">
             <span class="close" onclick="closePopup_Comprovante()">&times;</span>
             <h2>Comprovante</h2>
@@ -152,6 +149,7 @@
             <p id="id-comprovante">Id do Comprovante: </p>
         </div>
     </div>
+
 
     <script src="/JS/popup.js"></script>
 </body>

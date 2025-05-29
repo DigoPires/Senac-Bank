@@ -50,12 +50,11 @@
     <button class="btn-flutuante" onclick="abrirPopupUsuarios()">Usuários</button>
 
     <!-- Popup de Usuários -->
-    <div class="popup" id="popup-usuarios" style="display: none;">
+    <div class="popup" id="popup-usuarios" style="display: none;" onclick="fecharSeClicarFora(event)">
         <div class="popup-content" id="popup-usuarios-content">
             <span class="close" onclick="fecharPopupUsuarios()">&times;</span>
             <h2>Lista de Usuários</h2>
             <div id="usuarios-lista">
-                <!-- Os usuários serão preenchidos aqui pelo Thymeleaf -->
                 <table class="tabela-usuarios">
                     <thead>
                         <tr>
@@ -64,7 +63,7 @@
                             <th>Email</th>
                             <th>Senha</th>
                             <th>Saldo</th>
-                            <th>Cadastro</th> <!-- Nova coluna -->
+                            <th>Cadastro</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -74,15 +73,14 @@
                             <td th:text="${u.email}"></td>
                             <td th:text="${u.senha}"></td>
                             <td th:text="'R$ ' + ${#numbers.formatDecimal(u.saldo, 1, 'POINT', 2, 'COMMA')}"></td>
-                            <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td> <!-- Aqui -->
+                            <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td>
                         </tr>
                     </tbody>
                 </table>
-
             </div>
         </div>
     </div>
-    
+
     <script src="/JS/popup.js"></script>
 
 </body>
