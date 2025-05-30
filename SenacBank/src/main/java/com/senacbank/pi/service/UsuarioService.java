@@ -125,7 +125,7 @@ public class UsuarioService {
 
     public Boolean depositarNaCaixinha(Usuario usuario, double valor) {
         Caixinha caixinha = usuario.getCaixinha();
-        if (caixinha == null) {
+        if (caixinha == null || valor < 1) {
             return false;
         }
         if (valor > 0 && valor <= usuario.getSaldo()) {
@@ -151,7 +151,7 @@ public class UsuarioService {
     }
 
     public String contribuirCaixinha(Usuario usuario, double valor, String tipoContribuicao, String senha) {
-        if (!usuario.getSenha().equals(senha) || valor < 1 || tipoContribuicao == null) {
+        if (!usuario.getSenha().equals(senha) || tipoContribuicao == null) {
             return null;
         }
 

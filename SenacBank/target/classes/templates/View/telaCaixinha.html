@@ -31,7 +31,10 @@
                 <div class="caixinha-header">
 
                     <div class="caixinha-saldo">
-                        <p><strong>Saldo:</strong> <span
+                        <p><strong>Saldo Atual:</strong> <span
+                                th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 'POINT', 2, 'COMMA')}">R$
+                                0,00</span></p>
+                        <p><strong>Saldo Caixinha:</strong> <span
                                 th:text="'R$ ' + ${#numbers.formatDecimal(caixinha.saldo, 1, 'POINT', 2, 'COMMA')}">R$
                                 0,00</span></p>
                         <p><strong>Depósito Mínimo: R$ 1,00</strong></p>
@@ -45,10 +48,11 @@
             <div class="caixinha-conteudo">
                 <form class="caixinha-formulario" th:action="@{/caixinha}" method="post" th:object="${usuario}">
                     <div class="campo">
-                        <label for="tipoContribuicao">Tipo:</label>
+                        <label for="tipoContribuicao">Escolha uma opção:</label>
                         <select id="tipoContribuicao" name="tipoContribuicao" required>
-                            <option value="Adicionar">Adicionar</option>
-                            <option value="Retirar">Retirar</option>
+                            <option value="">Selecione</option>
+                            <option class="tipoContribuicao-itens" value="Adicionar">Adicionar</option>
+                            <option class="tipoContribuicao-itens" value="Retirar">Retirar</option>
                         </select>
                     </div>
 
@@ -117,6 +121,7 @@
         </div>
     </div>
 
+    <script src="/JS/tipoContribuicao.js"></script>
     <script src="/JS/popup.js"></script>
 </body>
 

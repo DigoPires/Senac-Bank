@@ -21,7 +21,7 @@ public class RendimentoCaixinhaService {
         
         for (Usuario usuario : usuarios) {
             Caixinha caixinha = usuario.getCaixinha();
-            if (caixinha != null && caixinha.getSaldo() > 0.99) {
+            if (caixinha != null && caixinha.getSaldo() >= 1) {
                 caixinha.aplicarRendimento();
             }
         }
