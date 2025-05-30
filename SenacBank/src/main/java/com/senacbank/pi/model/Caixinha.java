@@ -20,7 +20,7 @@ public class Caixinha {
     }
 
     public void aplicarRendimento() {
-        double taxaRendimento = saldo * 0.05;
+        double taxaRendimento = saldo * 0.008;
         this.saldo += taxaRendimento;
         this.rendimentoAcumulado += taxaRendimento;
         this.ultimaAtualizacao = LocalDateTime.now();
