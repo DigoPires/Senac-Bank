@@ -26,7 +26,7 @@
     <h1 class="titulo-barra">Caixinha de Rendimentos</h1>
     <main>
         <section class="caixinha-container">
-            <p>Coloque parte do seu saldo na caixinha e veja o rendimento automático!</p>
+            <p>Coloque parte do seu saldo na caixinha e veja o rendimento automático!</p>   
             <div>
                 <div class="caixinha-header">
 
@@ -46,9 +46,6 @@
                     </select>
                 </div>
                 
-                <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
-                    <p th:text="${mensagem}"></p>
-                </div>
             </div>
 
             <div class="caixinha-conteudo">
@@ -63,6 +60,10 @@
 
                     <div class="campo">
                         <input type="password" id="senha" name="senha" placeholder="Senha:" required>
+                    </div>
+
+                    <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
+                        <p th:text="${mensagem}"></p>
                     </div>
 
                     <button type="submit" class="btn confirmar">Confirmar</button>

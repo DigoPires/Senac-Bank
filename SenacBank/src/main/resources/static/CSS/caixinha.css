@@ -1,50 +1,52 @@
 .caixinha-container {
-    max-width: 900px;
-    margin: 50px auto;
+    max-width: 800px;
+    margin: 40px auto;
     background: #ffffff;
-    padding: 35px 45px;
-    border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    display: flex;
-    gap: 30px;
+    padding: 30px 40px;
+    border-radius: 18px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     flex-wrap: wrap;
 }
 
 .caixinha-container > div {
     flex: 1;
-    min-width: 300px;
+    min-width: 280px;
+}
+
+.caixinha-container > p {
+    margin-bottom: 18px;
 }
 
 .caixinha-header {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
 .caixinha-header h1 {
-    font-size: 2em;
+    font-size: 1.7em;
     color: #1a2530;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-weight: 600;
 }
 
 .caixinha-header p {
-    font-size: 1.05em;
+    font-size: 1em;
     color: #555;
-    line-height: 1.6;
-    margin-bottom: 20px;
+    line-height: 1.5;
+    margin-bottom: 18px;
 }
 
 .caixinha-saldo {
     background: #f9f9f9;
-    padding: 25px;
-    border-radius: 12px;
+    padding: 20px;
+    border-radius: 10px;
     border: 1px solid #e7e7e7;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     text-align: left;
 }
 
 .caixinha-saldo p {
-    margin: 8px 0;
-    font-size: 1.1em;
+    margin: 6px 0;
+    font-size: 1em;
     color: #333;
 }
 
@@ -56,43 +58,44 @@
 .caixinha-saldo p #rendimento-caixinha {
     font-weight: bold;
     color: #007bbb;
-    font-size: 1.3em;
+    font-size: 1.2em;
 }
+
 .caixinha-saldo p #rendimento-caixinha {
     color: #28a745;
-    font-size: 1.1em;
+    font-size: 1em;
 }
 
 .caixinha-formulario {
     display: flex;
     flex-direction: column;
-    gap: 20px;
 }
 
 .campo {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 6px;
 }
 
 .campo label {
     font-weight: 600;
     color: #333;
-    font-size: 1em;
+    font-size: 0.95em;
     text-align: left;
 }
 
 .campo input[type="number"],
 .campo input[type="password"],
 .campo select {
-    padding: 14px 18px;
-    border-radius: 10px;
+    padding: 12px 15px;
+    border-radius: 8px;
     border: 1px solid #d1d1d1;
-    font-size: 1em;
+    font-size: 0.95em;
     background: #fff;
     transition: border-color 0.2s ease, box-shadow 0.2s ease;
     width: 100%;
     box-sizing: border-box;
+    margin-bottom: 8px;
 }
 
 .campo input::placeholder {
@@ -102,26 +105,26 @@
 .campo input:focus,
 .campo select:focus {
     border-color: orange;
-    box-shadow: 0 0 0 3px rgba(255, 165, 0, 0.2);
+    box-shadow: 0 0 0 2px rgba(255, 165, 0, 0.2);
     outline: none;
 }
 
 .campo select {
     appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="%23555" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
+    background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="%23555" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/></svg>');
     background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 16px;
+    background-position: right 12px center;
+    background-size: 14px;
     cursor: pointer;
 }
 
 .btn.confirmar,
 .btn.voltar {
     width: 100%;
-    padding: 15px;
-    font-size: 1.15em;
+    padding: 12px;
+    font-size: 1em;
     font-weight: bold;
-    border-radius: 10px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
     text-transform: uppercase;
@@ -132,38 +135,34 @@
     background: linear-gradient(145deg, #ffae00, #f39c12);
     color: white;
     border: none;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .btn.confirmar:hover {
     background: linear-gradient(145deg, #f39c12, #e68a00);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+    box-shadow: 0 4px 10px rgba(255, 165, 0, 0.3);
 }
 
 .btn.voltar {
     background: #e9ecef;
     color: #333;
     border: 1px solid #ced4da;
-    margin-top: 10px;
+    margin-top: 8px;
 }
 
 .btn.voltar:hover {
     background: #dde1e5;
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .caixinha-formulario .alert.alert-erro {
-    background-color: #fff0f1;
-    color: #9c1c28;
-    border: 1px solid #f5c6cb;
-    padding: 15px;
-    border-radius: 10px;
-    font-weight: 500;
+    padding: 12px;
+    border-radius: 8px;
     text-align: left;
-    margin-top: 5px;
-    margin-bottom: 10px;
+    margin-top: 4px;
+    margin-bottom: 8px;
 }
 
 .caixinha-formulario .alert.alert-erro p {

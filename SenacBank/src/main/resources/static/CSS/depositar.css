@@ -29,36 +29,41 @@ h2 {
     font-size: 1em;
 }
 
-.btn.depositar {
+.btn.depositar,
+.btn.voltar {
     width: 100%;
-    margin-top: 15px;
-    background: orange;
-    color: white;
     padding: 15px;
-    font-size: 1.2em;
+    font-size: 1.15em;
     font-weight: bold;
-    border-radius: 8px;
+    border-radius: 10px;
     cursor: pointer;
-    transition: 0.3s;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn.depositar {
+    background: linear-gradient(145deg, #ffae00, #f39c12);
+    color: white;
+    border: none;
+    margin-top: 10px;
 }
 
 .btn.depositar:hover {
-    background: rgb(136, 93, 14);
+    background: linear-gradient(145deg, #f39c12, #e68a00);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
 }
 
 .btn.voltar {
-    width: 100%;
+    background: #e9ecef;
+    color: #333;
+    border: 1px solid #ced4da;
     margin-top: 10px;
-    background: #ccc;
-    color: black;
-    padding: 15px;
-    font-size: 1.2em;
-    font-weight: bold;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.3s;
 }
 
 .btn.voltar:hover {
-    background: #999;
+    background: #dde1e5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
