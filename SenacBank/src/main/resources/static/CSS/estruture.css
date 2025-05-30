@@ -120,3 +120,40 @@ footer {
     border: 1px solid #f5c6cb;
 }
 
+.caixinha-header {
+    margin-bottom: 20px;
+}
+
+.caixinha-header h1 {
+    font-size: 1.7em;
+    color: #1a2530;
+    margin-bottom: 6px;
+    font-weight: 600;
+}
+
+.caixinha-header p {
+    font-size: 1em;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.caixinha-saldo {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #e7e7e7;
+    margin-bottom: 18px;
+    text-align: left;
+}
+
+.caixinha-saldo p {
+    margin: 6px 0;
+    font-size: 1em;
+    color: #333;
+}
+
+.caixinha-saldo p strong {
+    color: #1a2530;
+}
+

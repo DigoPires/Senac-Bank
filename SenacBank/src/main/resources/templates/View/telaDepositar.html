@@ -27,6 +27,15 @@
     <main>
         <div class="container">
             <h2 class="titulo-container">Quanto você deseja Depositar?</h2>
+            <div class="caixinha-header">
+                <div class="caixinha-saldo">
+                    <p><strong>Saldo Atual:</strong> <span
+                            th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 'POINT', 2, 'COMMA')}">R$
+                               0,00</span></p>
+                    <p><strong>Depósito Máximo: </strong>R$ 1.000.000.000,00</p>
+                    </p>
+                </div>
+            </div>
             <div class="conteudo">
                 <form th:action="@{/depositar}" method="post" th:object="${usuario}">
                     <input type="hidden" th:field="*{id}">

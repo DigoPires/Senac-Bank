@@ -68,7 +68,7 @@ public class UsuarioService {
     }
 
     public Boolean depositar(Usuario usuario, double valor) {
-        if (valor > 0 && valor < 1000000000000000L) {
+        if (valor > 0 && valor <= 1000000000L) {
             usuario.setSaldo(valor + usuario.getSaldo());
             usuario.adicionarExtrato(new Extrato("Depósito", valor, LocalDateTime.now(), usuario.getNome()));
             return true;

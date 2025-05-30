@@ -27,6 +27,14 @@
     <main>
         <div class="container">
             <h2>Faça sua transferência aqui:</h2>
+            <div class="caixinha-header">
+                <div class="caixinha-saldo">
+                    <p><strong>Saldo Atual:</strong> <span
+                            th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 'POINT', 2, 'COMMA')}">R$
+                               0,00</span></p>
+                    </p>
+                </div>
+            </div>
             <div class="conteudo">
                 <form th:action="@{/transferir}" method="post" th:object="${usuario}">
                     <input type="number" id="idEnvio" name="idEnvio" placeholder="N° da conta:" required>
