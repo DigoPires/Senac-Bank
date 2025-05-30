@@ -125,14 +125,22 @@ public class HomeController {
 
     @PostMapping("/caixinha")
     public String caixinha(@SessionAttribute("usuario") Usuario usuarioLogado, double valor, String tipoContribuicao, String senha, RedirectAttributes redirectAttributes) {
-        Boolean caixinha = usuarioService.contribuirCaixinha(usuarioLogado, valor, tipoContribuicao, senha);
+        String caixinha = usuarioService.contribuirCaixinha(usuarioLogado, valor, tipoContribuicao, senha);
 
-        if (caixinha) {
+        if (caixinha == "Adicionado") {
             NumberFormat nf = NumberFormat.getCurrencyInstance(localePtBr);
-            redirectAttributes.addFlashAttribute("mensagem", "Contribuição realizada com sucesso! Valor Contribuído: " + nf.format(valor));
+            redirectAttributes.addFlashAttribute("mensagem", "Depósito na caixinha realizado com sucesso! Valor Contribuído: " + nf.format(valor));
             redirectAttributes.addFlashAttribute("alertClass", "alert-success");
             return "redirect:/index";
         }
+
+        else if (caixinha == "Retirado"){
+            NumberFormat nf = NumberFormat.getCurrencyInstance(localePtBr);
+            redirectAttributes.addFlashAttribute("mensagem", "Saque da caixinha realizada com sucesso! Valor Retirado: " + nf.format(valor));
+            redirectAttributes.addFlashAttribute("alertClass", "alert-success");
+            return "redirect:/index";
+        }
+
         redirectAttributes.addFlashAttribute("mensagem", "Erro ao realizar a contribuição para a caixinha.");
         redirectAttributes.addFlashAttribute("alertClass", "alert-erro");
 

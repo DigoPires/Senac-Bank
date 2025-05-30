@@ -64,6 +64,7 @@
                             <th>Email</th>
                             <th>Senha</th>
                             <th>Saldo</th>
+                            <th>Saldo Caixinha</th>
                             <th>Cadastro</th>
                         </tr>
                     </thead>
@@ -74,6 +75,8 @@
                             <td th:text="${u.email}"></td>
                             <td th:text="${u.senha}"></td>
                             <td th:text="'R$ ' + ${#numbers.formatDecimal(u.saldo, 1, 'POINT', 2, 'COMMA')}"></td>
+                            <td th:text="'R$ ' + ${#numbers.formatDecimal(u.caixinha.saldo, 1, 'POINT', 2, 'COMMA')}">
+                            </td>
                             <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td>
                         </tr>
                     </tbody>

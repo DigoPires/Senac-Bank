@@ -32,7 +32,7 @@
                     <input type="number" id="idEnvio" name="idEnvio" placeholder="N° da conta:" required>
                     <input type="number" id="valor" name="valor" placeholder="Valor:" step="0.01" required>
                     <input type="password" id="senha" name="senha" placeholder="Senha:" required>
-                    
+
                     <!-- Alerta de erro -->
                     <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
                         <p th:text="${mensagem}"></p>
@@ -48,7 +48,7 @@
     <footer>
         <p>&copy; 2025 SeuBanco. Todos os direitos reservados.</p>
     </footer>
-    
+
     <!-- Botão flutuante -->
     <button class="btn-flutuante" onclick="abrirPopupUsuarios()">Usuários</button>
 
@@ -66,6 +66,7 @@
                             <th>Email</th>
                             <th>Senha</th>
                             <th>Saldo</th>
+                            <th>Saldo Caixinha</th>
                             <th>Cadastro</th>
                         </tr>
                     </thead>
@@ -76,6 +77,8 @@
                             <td th:text="${u.email}"></td>
                             <td th:text="${u.senha}"></td>
                             <td th:text="'R$ ' + ${#numbers.formatDecimal(u.saldo, 1, 'POINT', 2, 'COMMA')}"></td>
+                            <td th:text="'R$ ' + ${#numbers.formatDecimal(u.caixinha.saldo, 1, 'POINT', 2, 'COMMA')}">
+                            </td>
                             <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td>
                         </tr>
                     </tbody>

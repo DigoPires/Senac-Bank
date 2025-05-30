@@ -150,28 +150,25 @@ public class UsuarioService {
         return false;
     }
 
-    public boolean aplicarRendimentoCaixinha(Usuario usuario) {
-        Caixinha caixinha = usuario.getCaixinha();
-        if (caixinha == null || usuario.getSaldo() < 1) {
-            return false;
-        }
-        caixinha.aplicarRendimento();
-        usuario.adicionarExtrato(new Extrato("Rendimento aplicado na Caixinha",
-                caixinha.getTaxaRendimento(), LocalDateTime.now(), usuario.getNome()));
-        return true;
-    }
-
-    public Boolean contribuirCaixinha(Usuario usuario, double valor, String tipoContribuicao, String senha) {
+    public String contribuirCaixinha(Usuario usuario, double valor, String tipoContribuicao, String senha) {
         if (!usuario.getSenha().equals(senha) || valor < 1 || tipoContribuicao == null) {
-            return false;
+            return null;
         }
 
         if (tipoContribuicao.equalsIgnoreCase("Adicionar")) {
-            return depositarNaCaixinha(usuario, valor);
+            boolean result = depositarNaCaixinha(usuario, valor);
+            if (result){
+                return "Adicionado";
+            }
         } 
         else {
-            return sacarDaCaixinha(usuario, valor);
+            boolean result = sacarDaCaixinha(usuario, valor);
+            if (result){
+                return "Retirado";
+            }
         }
+
+        return null;
     
     }    
 

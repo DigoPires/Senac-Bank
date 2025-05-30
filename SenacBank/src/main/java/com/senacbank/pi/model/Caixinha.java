@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 public class Caixinha {
     private double saldo;             
     private double rendimentoAcumulado;  
-    private double taxaRendimento = 0.5; 
     private LocalDateTime ultimaAtualizacao;
 
     public Caixinha() {
@@ -21,9 +20,9 @@ public class Caixinha {
     }
 
     public void aplicarRendimento() {
-        double rendimento = saldo * taxaRendimento;
-        this.saldo += rendimento;
-        this.rendimentoAcumulado += rendimento;
+        double taxaRendimento = saldo * 0.05;
+        this.saldo += taxaRendimento;
+        this.rendimentoAcumulado += taxaRendimento;
         this.ultimaAtualizacao = LocalDateTime.now();
     }
 
@@ -56,14 +55,6 @@ public class Caixinha {
 
     public double getRendimentoAcumulado() {
         return rendimentoAcumulado;
-    }
-
-    public double getTaxaRendimento() {
-        return taxaRendimento;
-    }
-
-    public void setTaxaRendimento(double taxaRendimento) {
-        this.taxaRendimento = taxaRendimento;
     }
 
     public LocalDateTime getUltimaAtualizacao() {

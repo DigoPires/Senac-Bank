@@ -1,4 +1,5 @@
 com\senacbank\pi\config\AuthInterceptor.class
+com\senacbank\pi\service\RendimentoCaixinhaService.class
 com\senacbank\pi\config\UsuarioConfig.class
 com\senacbank\pi\model\Extrato.class
 com\senacbank\pi\controller\HomeController.class
