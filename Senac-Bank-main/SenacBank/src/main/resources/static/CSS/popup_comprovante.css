@@ -1,0 +1,43 @@
+.popup-content-comprovante {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 25px 30px;
+    border-radius: 10px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+    position: relative;
+    font-family: Arial, sans-serif;
+}
+
+.popup-content-comprovante h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 28px;
+    color: #888;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: #000;
+}
+
+.popup-content-comprovante p {
+    font-size: 16px;
+    margin: 15px 0;
+}
+
+.popup-content-comprovante strong {
+    color: #333;
+}
+
+#tipo-comprovante{
+    font-size: 20px;
+    font-weight: bolder;
+}

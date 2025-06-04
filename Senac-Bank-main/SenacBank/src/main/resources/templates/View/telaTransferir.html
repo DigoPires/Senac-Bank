@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transferir</title>
+    <link rel="stylesheet" href="/CSS/estruture.css">
+    <link rel="stylesheet" href="/CSS/transferir.css">
+    <link rel="stylesheet" href="/CSS/estruture_popup.css">
+    <link rel="stylesheet" href="/CSS/popup_usuarios.css">
+</head>
+
+<body>
+
+    <header>
+        <img src="/IMG/Logo_PI 2.png" alt="Logo" id="logo">
+        <img src="/IMG/user.png" alt="Usuário" id="usuario">
+
+        <div class="header-icons">
+            <a href=""><img src="/IMG/interrogacao.png" alt="Dúvidas"></a>
+            <a id="sair" th:href="@{/logout}"><img src="/IMG/leave.png" alt="Sair"></a>
+        </div>
+    </header>
+
+    <h1 class="titulo-barra">Transferência</h1>
+    <main>
+        <div class="container">
+            <h2>Faça sua transferência aqui:</h2>
+            <div class="caixinha-header">
+                <div class="caixinha-saldo">
+                    <p><strong>Saldo Atual:</strong> <span
+                            th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 'POINT', 2, 'COMMA')}">R$
+                               0,00</span></p>
+                    </p>
+                </div>
+            </div>
+            <div class="conteudo">
+                <form th:action="@{/transferir}" method="post" th:object="${usuario}">
+                    <input type="number" id="idEnvio" name="idEnvio" placeholder="N° da conta:" required>
+                    <input type="number" id="valor" name="valor" placeholder="Valor:" step="0.01" required>
+                    <input type="password" id="senha" name="senha" placeholder="Senha:" required>
+
+                    <!-- Alerta de erro -->
+                    <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
+                        <p th:text="${mensagem}"></p>
+                    </div>
+
+                    <button type="submit" class="btn transferir">Transferir</button>
+                    <a th:href="@{/index}"><button type="button" class="btn voltar">Voltar</button></a>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 SeuBanco. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Botão flutuante -->
+    <button class="btn-flutuante" onclick="abrirPopupUsuarios()">Usuários</button>
+
+    <!-- Popup de Usuários -->
+    <div class="popup" id="popup-usuarios" style="display: none;" onclick="fecharSeClicarFora(event)">
+        <div class="popup-content" id="popup-usuarios-content">
+            <span class="close" onclick="fecharPopupUsuarios()">&times;</span>
+            <h2>Lista de Usuários</h2>
+            <div id="usuarios-lista">
+                <table class="tabela-usuarios">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Senha</th>
+                            <th>Saldo</th>
+                            <th>Saldo Caixinha</th>
+                            <th>Cadastro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="u : ${usuarios}">
+                            <td th:text="${u.id}"></td>
+                            <td th:text="${u.nome}"></td>
+                            <td th:text="${u.email}"></td>
+                            <td th:text="${u.senha}"></td>
+                            <td th:text="'R$ ' + ${#numbers.formatDecimal(u.saldo, 1, 'POINT', 2, 'COMMA')}"></td>
+                            <td th:text="'R$ ' + ${#numbers.formatDecimal(u.caixinha.saldo, 1, 'POINT', 2, 'COMMA')}">
+                            </td>
+                            <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/popup.js"></script>
+</body>
+
+</html>

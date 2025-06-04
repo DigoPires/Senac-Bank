@@ -1,0 +1,69 @@
+.menu-voltar {
+    cursor: pointer;
+}
+
+#return-icon {
+    width: 40px;
+}
+
+.container {
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 450px;
+}
+
+h2 {
+    color: black;
+    margin-bottom: 20px;
+}
+
+.conteudo input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+.btn.transferir,
+.btn.voltar {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.15em;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn.transferir {
+    background: linear-gradient(145deg, #ffae00, #f39c12);
+    color: white;
+    border: none;
+    margin-top: 10px;
+}
+
+.btn.transferir:hover {
+    background: linear-gradient(145deg, #f39c12, #e68a00);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
+}
+
+.btn.voltar {
+    background: #e9ecef;
+    color: #333;
+    border: 1px solid #ced4da;
+    margin-top: 10px;
+}
+
+.btn.voltar:hover {
+    background: #dde1e5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixinha</title>
+    <link rel="stylesheet" href="/CSS/estruture.css">
+    <link rel="stylesheet" href="/CSS/caixinha.css">
+    <link rel="stylesheet" href="/CSS/estruture_popup.css">
+    <link rel="stylesheet" href="/CSS/popup_usuarios.css">
+</head>
+
+<body>
+
+    <header>
+        <img src="/IMG/Logo_PI 2.png" alt="Logo" id="logo">
+        <img src="/IMG/user.png" alt="Usuário" id="usuario">
+
+        <div class="header-icons">
+            <a href=""><img src="/IMG/interrogacao.png" alt="Dúvidas"></a>
+            <a id="sair" th:href="@{/logout}"><img src="/IMG/leave.png" alt="Sair"></a>
+        </div>
+    </header>
+
+    <h1 class="titulo-barra">Caixinha de Rendimentos</h1>
+    <main>
+        <section class="caixinha-container">
+            <p>Coloque parte do seu saldo na caixinha e veja o rendimento automático!</p>
+            <div>
+                <div class="caixinha-header">
+
+                    <div class="caixinha-saldo">
+                        <p><strong>Saldo Atual:</strong> <span
+                                th:text="'R$ ' + ${#numbers.formatDecimal(usuario.saldo, 1, 'POINT', 2, 'COMMA')}">R$
+                                0,00</span></p>
+                        <p><strong>Saldo Caixinha:</strong> <span
+                                th:text="'R$ ' + ${#numbers.formatDecimal(caixinha.saldo, 1, 'POINT', 2, 'COMMA')}">R$
+                                0,00</span></p>
+                        <p><strong>Depósito Mínimo: R$ 1,00</strong></p>
+                        <p><strong>Taxa de rendimento a cada 5 segundos:</strong> <span id="rendimento-caixinha">+
+                                0,8%</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="caixinha-conteudo">
+                <form class="caixinha-formulario" th:action="@{/caixinha}" method="post" th:object="${usuario}">
+                    <div class="campo">
+                        <label for="tipoContribuicao">Escolha uma opção:</label>
+                        <select id="tipoContribuicao" name="tipoContribuicao" required>
+                            <option value="">Selecione</option>
+                            <option class="tipoContribuicao-itens" value="Adicionar">Adicionar</option>
+                            <option class="tipoContribuicao-itens" value="Retirar">Retirar</option>
+                        </select>
+                    </div>
+
+                    <div class="campo">
+                        <label for="valor">Valor:</label>
+                        <input type="number" id="valor" name="valor" placeholder="Ex: 50,00" min="0" step="0.01"
+                            required>
+                    </div>
+
+                    <div class="campo">
+                        <input type="password" id="senha" name="senha" placeholder="Senha:" required>
+                    </div>
+
+                    <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
+                        <p th:text="${mensagem}"></p>
+                    </div>
+
+                    <button type="submit" class="btn confirmar">Confirmar</button>
+                    <a th:href="@{/index}"><button type="button" class="btn voltar">Voltar</button></a>
+                </form>
+
+            </div>
+        </section>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2025 SeuBanco. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Botão flutuante -->
+    <button class="btn-flutuante" onclick="abrirPopupUsuarios()">Usuários</button>
+
+    <!-- Popup de Usuários -->
+    <div class="popup" id="popup-usuarios" style="display: none;" onclick="fecharSeClicarFora(event)">
+        <div class="popup-content" id="popup-usuarios-content">
+            <span class="close" onclick="fecharPopupUsuarios()">&times;</span>
+            <h2>Lista de Usuários</h2>
+            <div id="usuarios-lista">
+                <table class="tabela-usuarios">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Senha</th>
+                            <th>Saldo</th>
+                            <th>Saldo Caixinha</th>
+                            <th>Cadastro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="u : ${usuarios}">
+                            <td th:text="${u.id}"></td>
+                            <td th:text="${u.nome}"></td>
+                            <td th:text="${u.email}"></td>
+                            <td th:text="${u.senha}"></td>
+                            <td th:text="'R$ ' + ${#numbers.formatDecimal(u.saldo, 1, 'POINT', 2, 'COMMA')}"></td>
+                            <td th:text="'R$ ' + ${#numbers.formatDecimal(u.caixinha.saldo, 1, 'POINT', 2, 'COMMA')}">
+                            </td>
+                            <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/tipoContribuicao.js"></script>
+    <script src="/JS/popup.js"></script>
+</body>
+
+</html>

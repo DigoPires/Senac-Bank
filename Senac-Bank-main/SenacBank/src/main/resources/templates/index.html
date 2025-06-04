@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/CSS/estruture.css">
+    <link rel="stylesheet" href="/CSS/home.css">
+    <link rel="stylesheet" href="/CSS/estruture_popup.css">
+    <link rel="stylesheet" href="/CSS/popup_extrato.css">
+    <link rel="stylesheet" href="/CSS/popup_comprovante.css">
+    <link rel="stylesheet" href="/CSS/popup_usuarios.css">
+</head>
+
+<body>
+    <header>
+        <img src="/IMG/Logo_PI 2.png" alt="Logo" id="logo">
+        <img src="/IMG/user.png" alt="Usuário" id="usuario">
+
+        <div class="header-icons">
+            <a href=""><img src="/IMG/interrogacao.png" alt="Dúvidas"></a>
+            <a id="sair" th:href="@{/logout}"><img src="/IMG/leave.png" alt="Sair"></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+
+            <div class="titulo-nome-id">
+                <h1>Olá, <span th:if="${session.usuario}" class="user-name" th:text="${session.usuario.nome}"></span>!
+                </h1>
+                <h2>Seu ID: <span th:if="${session.usuario}" class="user-name" th:text="${session.usuario.id}"></span>
+                </h2>
+            </div>
+            <!-- Alerta de sucesso -->
+            <div th:if="${mensagem != null} and ${alertClass} == 'alert-success'" class="alert alert-success">
+                <p th:text="${mensagem}"></p>
+            </div>
+
+            <!-- Alerta de erro -->
+            <div th:if="${mensagem != null} and ${alertClass} == 'alert-erro'" class="alert alert-erro">
+                <p th:text="${mensagem}"></p>
+            </div>
+            <div class="saldo">
+                <div>
+                    <p class="text-icon"><img src="/IMG/saldo.png" alt="">Saldo disponível</p>
+                    <h2 th:if="${session.usuario}" class="saldo-valor"
+                        th:text="'R$ ' + ${#numbers.formatDecimal(session.usuario.saldo, 1, 'POINT', 2, 'COMMA')}">
+                    </h2>
+                </div>
+                <button class="btn ver-extrato text-icon" onclick="openPopup_Extrato()">Ver Extrato<img
+                        src="/IMG/history.png" alt="Ícone Extrato"></button>
+            </div>
+            <div class="nav-main">
+                <div class="buttons">
+                    <a href="/depositar"><button class="btn depositar">DEPOSITAR</button></a>
+                    <a href="/sacar"><button class="btn sacar">SACAR</button></a>
+                    <a href="/transferir"><button class="btn transferir">TRANSFERIR</button></a>
+                    <a href="/caixinha"><button class="btn extra">CAIXINHA</button></a>
+                </div>
+                <img class="slogan" src="/IMG/slogan1.jpg" alt="">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Senac Bank. Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- Botão flutuante -->
+    <button class="btn-flutuante" onclick="abrirPopupUsuarios()">Usuários</button>
+
+    <!-- Popup de Usuários -->
+    <div class="popup" id="popup-usuarios" style="display: none;" onclick="fecharSeClicarFora(event)">
+        <div class="popup-content" id="popup-usuarios-content">
+            <span class="close" onclick="fecharPopupUsuarios()">&times;</span>
+            <h2>Lista de Usuários</h2>
+            <div id="usuarios-lista">
+                <table class="tabela-usuarios">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Email</th>
+                            <th>Senha</th>
+                            <th>Saldo</th>
+                            <th>Saldo Caixinha</th>
+                            <th>Cadastro</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="u : ${usuarios}">
+                            <td th:text="${u.id}"></td>
+                            <td th:text="${u.nome}"></td>
+                            <td th:text="${u.email}"></td>
+                            <td th:text="${u.senha}"></td>
+                            <td th:text="'R$ ' + ${#numbers.formatDecimal(u.saldo, 1, 'POINT', 2, 'COMMA')}"></td>
+                            <td th:text="'R$ ' + ${#numbers.formatDecimal(u.caixinha.saldo, 1, 'POINT', 2, 'COMMA')}">
+                            </td>
+                            <td th:text="${#temporals.format(u.dataCadastro, 'dd/MM/yyyy HH:mm')}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Popup de Extrato -->
+    <div class="popup" id="extrato-popup" onclick="closeIfClickedOutside_Extrato(event)">
+        <div class="popup-content">
+            <span class="close" onclick="closePopup_Extrato()">&times;</span>
+            <h2>Extrato</h2>
+            <div class="extrato-lista" th:if="${usuario.extrato.size() > 0}">
+                <div class="extrato-item" th:each="transacao : ${usuario.extrato}">
+                    <div class="info">
+                        <p th:text="${transacao.tipo}"></p>
+                        <h2 th:text="${transacao.tipo.contains('Recebida') or transacao.tipo.contains('Depósito') or transacao.tipo.contains('Retirado')? '+ R$ ' + #numbers.formatDecimal(transacao.valor, 1, 'POINT', 2, 'COMMA') : '- R$ ' + #numbers.formatDecimal(transacao.valor, 1, 'POINT', 2, 'COMMA')}"
+                            th:classappend="${transacao.tipo.contains('Recebida') or transacao.tipo.contains('Depósito') or transacao.tipo.contains('Retirado')}? 'valor positivo' : 'valor negativo'">
+                        </h2>
+                        <p th:text="${transacao.participante}"></p>
+                        <p th:text="${#temporals.format(transacao.dataHora, 'dd/MM/yyyy HH:mm')}"></p>
+                    </div>
+                    <div class="comprovante">
+                        <img src="/IMG/extrato.png" th:data-tipo="${transacao.tipo}"
+                            th:data-valor="${#numbers.formatDecimal(transacao.valor, 1, 'POINT', 2, 'COMMA')}"
+                            th:data-participante="${transacao.participante}"
+                            th:data-datahora="${#temporals.format(transacao.dataHora, 'dd/MM/yyyy HH:mm')}"
+                            th:data-id="${transacao.idTransacao}"
+                            onclick="openPopup_Comprovante(this.dataset.tipo, this.dataset.valor, this.dataset.participante, this.dataset.datahora, this.dataset.id)"
+                            alt="Comprovante">
+                        <p>Comprovante</p>
+                    </div>
+                </div>
+            </div>
+            <div class="extrato-vazio" th:if="${usuario.extrato.size() == 0}">
+                <p>Você ainda não possui conteúdo no extrato.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Popup de Comprovante -->
+    <div class="popup" id="comprovante-popup" style="display: none;" onclick="closeIfClickedOutside_Comprovante(event)">
+        <div class="popup-content-comprovante">
+            <span class="close" onclick="closePopup_Comprovante()">&times;</span>
+            <h2>Comprovante</h2>
+            <p id="tipo-comprovante"></p>
+            <p id="valor-comprovante">Valor: </p>
+            <p id="participante-comprovante">Nome: </p>
+            <p id="datahora-comprovante">Data e Hora: </p>
+            <p id="id-comprovante">Id do Comprovante: </p>
+        </div>
+    </div>
+
+
+    <script src="/JS/popup.js"></script>
+</body>
+
+</html>
