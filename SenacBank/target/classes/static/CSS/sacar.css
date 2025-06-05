@@ -55,16 +55,3 @@ h2 {
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(255, 165, 0, 0.3);
 }
-
-.btn.voltar {
-    background: #e9ecef;
-    color: #333;
-    border: 1px solid #ced4da;
-    margin-top: 10px;
-}
-
-.btn.voltar:hover {
-    background: #dde1e5;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}

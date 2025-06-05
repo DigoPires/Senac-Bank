@@ -1,0 +1,66 @@
+.container {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 32px 24px;
+    max-width: 900px;
+    width: 100%;
+    margin: auto; 
+    box-sizing: border-box;
+}
+
+.titulo-nome-id h1 {
+    color: #ff7f00;
+    margin-bottom: 8px;
+    font-size: 2.2rem;
+}
+
+.titulo-nome-id h2 {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 24px;
+}
+
+.faq-lista {
+    margin-top: 16px;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e0e0e0;
+    padding: 18px 0;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item h3 {
+    color: #283593;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+}
+
+.faq-item p {
+    color: #444;
+    font-size: 1rem;
+    margin: 0;
+}
+
+.faq-lista {
+    display: flex;
+    gap: 32px;
+    margin-top: 16px;
+    justify-content: center;
+}
+
+.faq-coluna {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.btn.voltar {
+    margin-top: 20px;
+    width: 200px;
+}

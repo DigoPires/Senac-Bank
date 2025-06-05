@@ -147,6 +147,15 @@ public class HomeController {
         return "redirect:/caixinha";
     }
 
+    @GetMapping("/duvidas")
+public String telaDuvidas(Model model, @SessionAttribute("usuario") Usuario usuarioLogado) {
+    List<Usuario> usuarios = usuarioService.buscarTodos();
+    model.addAttribute("usuarios", usuarios);        
+    model.addAttribute("usuario", usuarioLogado);
+
+    return "View/duvidas";
+}
+
     @GetMapping("/logout")
     public String logout(RedirectAttributes redirectAttributes) {
         redirectAttributes.addFlashAttribute("mensagem", "Usuário deslogado!");

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dúvidas Frequentes</title>
+    <link rel="stylesheet" href="/CSS/estruture.css">
+    <link rel="stylesheet" href="/CSS/estruture_popup.css">
+    <link rel="stylesheet" href="/CSS/duvidas.css">
+</head>
+
+<body>
+    <header>
+        <a href="/index"><img src="/IMG/Logo_PI 2.png" alt="Logo" id="logo"></a>
+        <img src="/IMG/user.png" alt="Usuário" id="usuario">
+        <div class="header-icons">
+            <a href="/duvidas"><img src="/IMG/interrogacao.png" alt="Dúvidas"></a>
+            <a id="sair" th:href="@{/logout}"><img src="/IMG/leave.png" alt="Sair"></a>
+        </div>
+    </header>
+
+    <h1 class="titulo-barra">Dúvidas Frequentes</h1>
+    <main>
+        <div class="container">
+            <div class="titulo-nome-id">
+                <h2>Veja respostas para as perguntas mais comuns</h2>
+            </div>
+            <div class="faq-lista">
+                <div class="faq-coluna">
+                    <div class="faq-item">
+                        <h3>Como faço para depositar dinheiro?</h3>
+                        <p>Para depositar, clique no botão "DEPOSITAR" na página inicial, informe o valor e confirme a
+                            operação.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Como posso sacar meu saldo?</h3>
+                        <p>Vá até a opção "SACAR", informe o valor desejado e siga as instruções para concluir o saque.
+                        </p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Como transferir para outro usuário?</h3>
+                        <p>Selecione "TRANSFERIR", informe o ID do destinatário e o valor, depois confirme a
+                            transferência.</p>
+                    </div>
+                </div>
+                <div class="faq-coluna">
+                    <div class="faq-item">
+                        <h3>O que é a Caixinha?</h3>
+                        <p>A Caixinha é uma funcionalidade para guardar dinheiro separado do saldo principal, ideal para
+                            economias.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Como vejo meu extrato?</h3>
+                        <p>Clique em "Ver Extrato" na página inicial para visualizar todas as suas transações.</p>
+                    </div>
+                    <div class="faq-item">
+                        <h3>Esqueci minha senha, o que faço?</h3>
+                        <p>Entre em contato com o suporte para redefinir sua senha.</p>
+                    </div>
+                </div>
+            </div>
+            <a th:href="@{/index}"><button type="button" class="btn voltar">Voltar</button></a>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Senac Bank. Todos os direitos reservados.</p>
+    </footer>
+</body>
+
+</html>
