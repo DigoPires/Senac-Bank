@@ -1,6 +1,7 @@
 <h1 align="center"> SenacBank </h1>
 
-🏆 Projeto Concluído 🏆
+:trophy: Projeto Concluído :trophy:
+
 Desenvolvido no terceiro semestre da faculdade, o SenacBank é um sistema bancário web construído com Java e Spring Boot. Os usuários podem facilmente realizar operações como cadastro, login, depósito, saque e transferência, e ainda aproveitar funcionalidades adicionais, como a "Caixinha" de rendimentos.
 
 ## :hammer: Funcionalidades do projeto
